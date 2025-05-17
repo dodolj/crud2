@@ -1,0 +1,51 @@
+### Maven ###
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+.mvn/timing.properties
+.mvn/wrapper/maven-wrapper.jar
+
+### IDEA ###
+.idea/
+*.iml
+*.iws
+*.ipr
+.idea_modules/
+
+### Eclipse ###
+.settings/
+.classpath
+.project
+.factorypath
+
+### VS Code ###
+.vscode/
+bin/
+
+### Mac ###
+.DS_Store
+
+### Logs ###
+*.log
+logs/
+
+### Temp ###
+*.tmp
+*.bak
+*.swp
+*~.nib
+
+### System ###
+Thumbs.db
+
+### Cstom ignores ###
+/shelf/
+/workspace.xml
+/httpRequests/
+/dataSources/
+/dataSources.local.xml

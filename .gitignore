@@ -12,9 +12,6 @@ buildNumber.properties
 
 ### IDEA ###
 .idea/
-.idea/.gitignore
-.idea/misc.xml
-.idea/vcs.xml
 *.iml
 *.iws
 *.ipr

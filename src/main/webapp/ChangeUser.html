@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Поиск пользователя</title>
+    </head>
+    <body>
+        <h1>Найденный пользователь</h1>
+        <p>ID: ${user.id}</p>
+        <p>Имя: ${user.name}</p>
+        <p>Пароль: ${user.password}</p>
+
+        <a href="/users/edit?id=${user.id}">Редактировать</a><br>
+        <a href="/users">Назад к списку</a>
+    </body>
+</html>

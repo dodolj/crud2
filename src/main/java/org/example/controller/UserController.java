@@ -52,4 +52,10 @@ public class UserController {
         userService.deleteUser(id);
         return "redirect:/users";
     }
+
+    @GetMapping("/hello")
+    @ResponseBody
+    public String hello() {
+        return "Hello World";
+    }
 }

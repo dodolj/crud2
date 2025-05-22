@@ -1,5 +1,6 @@
 package org.example.config;
 
+import org.springframework.lang.NonNullApi;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
 public class AppInit extends AbstractAnnotationConfigDispatcherServletInitializer {

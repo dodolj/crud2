@@ -1,5 +1,6 @@
 package org.example.controller;
 
+import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
 import org.example.model.User;
 import org.example.service.UserService;
@@ -56,6 +57,11 @@ public class UserController {
     @GetMapping("/hello")
     @ResponseBody
     public String hello() {
-        return "Hello World";
+        return "hello";
+    }
+
+    @PostConstruct
+    public void init() {
+        System.out.println("PROVERKA");
     }
 }

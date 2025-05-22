@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Optional;
 import java.util.UUID;
 
 @Controller
@@ -37,7 +38,7 @@ public class UserController {
 
     @GetMapping("/edit/{id}")
     public String showEditForm(@PathVariable UUID id, Model model) {
-        User user = userService.getUserById(id);
+        Optional<User> user = userService.getUserById(id);
         model.addAttribute("user", user);
         return "user-form";
     }
@@ -58,10 +59,5 @@ public class UserController {
     @ResponseBody
     public String hello() {
         return "hello";
-    }
-
-    @PostConstruct
-    public void init() {
-        System.out.println("PROVERKA");
     }
 }

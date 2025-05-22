@@ -1,43 +1,20 @@
 package org.example.repository;
 
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.PersistenceContext;
-import jakarta.transaction.Transactional;
 import org.example.model.User;
-import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
-@Repository
-@Transactional
-public class UserRepository {
+public interface UserRepository {
 
-    @PersistenceContext
-    private EntityManager entityManager;
+    void save(User user);
 
-    public void save(User user) {
-        entityManager.persist(user);
-    }
+    Optional<User> findById(UUID id);
 
-    public User findById(UUID id) {
-        return entityManager.find(User.class, id);
-    }
+    List<User> findAll();
 
-    public List<User> findAll() {
-        return entityManager
-                .createQuery("SELECT u FROM User u", User.class)
-                .getResultList();
-    }
+    void update(User user);
 
-    public void update(User user) {
-        entityManager.merge(user);
-    }
-
-    public void delete(UUID id) {
-        User user = findById(id);
-        if (user != null) {
-            entityManager.remove(user);
-        }
-    }
+    boolean delete(UUID id);
 }

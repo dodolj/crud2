@@ -6,6 +6,7 @@ import org.example.repository.UserRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 @Service
@@ -18,7 +19,7 @@ public class UserService {
         userRepository.save(user);
     }
 
-    public User getUserById(UUID id) {
+    public Optional<User> getUserById(UUID id) {
         return userRepository.findById(id);
     }
 

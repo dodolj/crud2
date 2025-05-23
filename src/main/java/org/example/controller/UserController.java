@@ -1,6 +1,5 @@
 package org.example.controller;
 
-import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
 import org.example.model.User;
 import org.example.service.UserService;
@@ -12,11 +11,16 @@ import java.util.Optional;
 import java.util.UUID;
 
 @Controller
-@RequestMapping("/users")
+@RequestMapping("/")
 @RequiredArgsConstructor
 public class UserController {
 
     private final UserService userService;
+
+    @RequestMapping("/")
+    public String redirectHome(Model model) {
+        return "redirect:/users";
+    }
 
     @GetMapping
     public String getAllUsers(Model model) {
@@ -33,7 +37,7 @@ public class UserController {
     @PostMapping
     public String createUser(@ModelAttribute("user") User user) {
         userService.createUser(user);
-        return "redirect:/users";
+        return "redirect:/";
     }
 
     @GetMapping("/edit/{id}")
@@ -46,13 +50,13 @@ public class UserController {
     @PostMapping("/update")
     public String updateUser(@ModelAttribute("user") User user) {
         userService.updateUser(user);
-        return "redirect:/users";
+        return "redirect:/";
     }
 
     @GetMapping("/delete/{id}")
     public String deleteUser(@PathVariable UUID id) {
         userService.deleteUser(id);
-        return "redirect:/users";
+        return "redirect:/";
     }
 
     @GetMapping("/hello")

@@ -41,10 +41,15 @@ public class UserController {
     }
 
     @GetMapping("/edit/{id}")
-    public String showEditForm(@PathVariable UUID id, Model model) {
-        Optional<User> user = userService.getUserById(id);
-        model.addAttribute("user", user);
-        return "user-edit";
+    public String showEditForm(@PathVariable("id") UUID id, Model model) {
+        Optional<User> userOptional = userService.getUserById(id);
+
+        if (userOptional.isPresent()) {
+            model.addAttribute("user", userOptional.get());
+            return "user-edit";
+        } else {
+            return "redirect:/";
+        }
     }
 
     @PostMapping("/update")

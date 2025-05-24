@@ -44,7 +44,7 @@ public class UserController {
     public String showEditForm(@PathVariable UUID id, Model model) {
         Optional<User> user = userService.getUserById(id);
         model.addAttribute("user", user);
-        return "user-form";
+        return "user-edit";
     }
 
     @PostMapping("/update")
@@ -54,8 +54,14 @@ public class UserController {
     }
 
     @GetMapping("/delete/{id}")
-    public String deleteUser(@PathVariable UUID id) {
+    public String deleteUser(@PathVariable("id") UUID id) {
         userService.deleteUser(id);
+        return "redirect:/";
+    }
+
+    @GetMapping("/deleteAll")
+    public String deleteAllUsers() {
+        userService.deleteAllUsers();
         return "redirect:/";
     }
 

@@ -50,4 +50,10 @@ public class UserRepositoryImpl implements UserRepository {
         }
         return false;
     }
+
+    @Override
+    @Transactional
+    public void deleteAllUsers() {
+        entityManager.createQuery("DELETE FROM User").executeUpdate();
+    }
 }

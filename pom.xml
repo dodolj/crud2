@@ -11,73 +11,91 @@
     <packaging>war</packaging>
 
     <properties>
+        <maven.build.version>17</maven.build.version>
+        <maven.plugin.version>3.4.0</maven.plugin.version>
         <spring.version>6.1.14</spring.version>
         <javax.version>4.0.1</javax.version>
-        <thymeleaf.version>3.0.14.RELEASE</thymeleaf.version>
+        <thymeleaf.version>3.1.2.RELEASE</thymeleaf.version>
         <lombok.version>1.18.36</lombok.version>
+        <slf4j.version>2.0.17</slf4j.version>
+        <logback.version>1.5.18</logback.version>
+        <jstl-api.version>3.0.2</jstl-api.version>
+        <jstl-impl.version>3.0.1</jstl-impl.version>
+        <servlet-api.version>6.0.0</servlet-api.version>
+        <annotation-api.version>2.1.1</annotation-api.version>
+        <hibernate.version>6.2.27.Final</hibernate.version>
+        <postgresql.version>42.7.5</postgresql.version>
     </properties>
 
     <dependencies>
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
-            <version>2.0.17</version>
+            <version>${slf4j.version}</version>
         </dependency>
         <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
-            <version>1.5.18</version>
+            <version>${logback.version}</version>
         </dependency>
+
         <dependency>
             <groupId>jakarta.servlet.jsp.jstl</groupId>
             <artifactId>jakarta.servlet.jsp.jstl-api</artifactId>
-            <version>3.0.2</version>
+            <version>${jstl-api.version}</version>
         </dependency>
         <dependency>
             <groupId>org.glassfish.web</groupId>
             <artifactId>jakarta.servlet.jsp.jstl</artifactId>
-            <version>3.0.1</version>
+            <version>${jstl-impl.version}</version>
         </dependency>
+
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <version>${lombok.version}</version>
             <scope>provided</scope>
         </dependency>
+
         <dependency>
             <groupId>jakarta.servlet</groupId>
             <artifactId>jakarta.servlet-api</artifactId>
-            <version>6.0.0</version>
+            <version>${servlet-api.version}</version>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>jakarta.annotation</groupId>
             <artifactId>jakarta.annotation-api</artifactId>
-            <version>2.1.1</version>
+            <version>${annotation-api.version}</version>
         </dependency>
+
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-core</artifactId>
-            <version>6.2.27.Final</version>
+            <version>${hibernate.version}</version>
         </dependency>
+
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-webmvc</artifactId>
-            <version>6.1.14</version>
+            <version>${spring.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-orm</artifactId>
-            <version>6.1.14</version>
+            <version>${spring.version}</version>
         </dependency>
+
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
-            <version>42.7.5</version>
+            <version>${postgresql.version}</version>
         </dependency>
+
         <dependency>
             <groupId>org.thymeleaf</groupId>
             <artifactId>thymeleaf-spring6</artifactId>
-            <version>3.1.2.RELEASE</version>
+            <version>${thymeleaf.version}</version>
         </dependency>
     </dependencies>
 
@@ -87,7 +105,7 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-war-plugin</artifactId>
-                    <version>3.4.0</version>
+                    <version>${maven.plugin.version}</version>
                     <configuration>
                         <warSourceDirectory>src/main/webapp</warSourceDirectory>
                         <warName>spring_crud</warName>
@@ -101,13 +119,13 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <configuration>
-                    <source>17</source>
-                    <target>17</target>
+                    <source>${maven.build.version}</source>
+                    <target>${maven.build.version}</target>
                     <annotationProcessorPaths>
                         <path>
                             <groupId>org.projectlombok</groupId>
                             <artifactId>lombok</artifactId>
-                            <version>1.18.36</version>
+                            <version>${lombok.version}</version>
                         </path>
                     </annotationProcessorPaths>
                 </configuration>

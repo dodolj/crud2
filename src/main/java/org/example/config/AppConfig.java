@@ -1,7 +1,7 @@
 package org.example.config;
 
 import jakarta.persistence.EntityManagerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -15,21 +15,22 @@ import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import javax.sql.DataSource;
+import java.util.Objects;
 import java.util.Properties;
 
 @Configuration
+@PropertySource("classpath:db.properties")
 @ComponentScan(basePackages = "org.example")
 @EnableTransactionManagement
-@PropertySource("classpath:db.properties")
+@RequiredArgsConstructor
 public class AppConfig {
 
-    @Autowired
-    private Environment environment;
+    private final Environment environment;
 
     @Bean
     public DataSource dataSource() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
-        dataSource.setDriverClassName(environment.getProperty("db.driver"));
+        dataSource.setDriverClassName(Objects.requireNonNull(environment.getProperty("db.driver")));
         dataSource.setUrl(environment.getProperty("db.url"));
         dataSource.setUsername(environment.getProperty("db.username"));
         dataSource.setPassword(environment.getProperty("db.password"));

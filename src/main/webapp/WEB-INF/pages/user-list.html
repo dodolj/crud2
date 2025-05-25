@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8" />
-        <title>Пользователи</title>
+        <title>Users list</title>
         <style>
             table {
                 border-collapse: collapse;
@@ -48,7 +48,7 @@
             <tbody>
                 <tr th:each="user : ${users}">
                     <td>
-                        <a th:href="@{/edit/{id}(id=${user.id})}" th:text="${user.id}"></a>
+                        <a th:href="@{/users/edit/{id}(id=${user.id})}" th:text="${user.id}"></a>
                     </td>
                     <td th:text="${user.name}"></td>
                     <td th:text="${user.password}"></td>
@@ -56,10 +56,9 @@
             </tbody>
         </table>
         <div class="btn-container">
-            <button onclick="location.href='/new'">Add user</button>
-            <button onclick="location.href='/'">Reload user-list</button>
-            <button onclick="location.href='/hello'">Hello page</button>
-            <button onclick="location.href='/deleteAll'">Delete all</button>
+            <button onclick="location.href='/users/new'">Add user</button>
+            <button onclick="location.href='/users'">Reload user-list</button>
+            <button onclick="location.href='/users/deleteAll'">Delete all</button>
         </div>
     </body>
 </html>

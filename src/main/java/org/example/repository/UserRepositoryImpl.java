@@ -2,15 +2,17 @@ package org.example.repository;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
-import jakarta.transaction.Transactional;
+import lombok.RequiredArgsConstructor;
 import org.example.model.User;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
 @Repository
+@Transactional(readOnly = true)
 public class UserRepositoryImpl implements UserRepository {
 
     @PersistenceContext
@@ -19,7 +21,7 @@ public class UserRepositoryImpl implements UserRepository {
     @Override
     @Transactional
     public void save(User user) {
-        entityManager.merge(user);
+        entityManager.persist(user);
     }
 
     @Override

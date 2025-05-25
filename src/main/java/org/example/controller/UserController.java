@@ -11,16 +11,11 @@ import java.util.Optional;
 import java.util.UUID;
 
 @Controller
-@RequestMapping("/")
+@RequestMapping("/users")
 @RequiredArgsConstructor
 public class UserController {
 
     private final UserService userService;
-
-    @RequestMapping("/")
-    public String redirectHome(Model model) {
-        return "redirect:/users";
-    }
 
     @GetMapping
     public String getAllUsers(Model model) {
@@ -37,7 +32,7 @@ public class UserController {
     @PostMapping
     public String createUser(@ModelAttribute("user") User user) {
         userService.createUser(user);
-        return "redirect:/";
+        return "redirect:/users";
     }
 
     @GetMapping("/edit/{id}")
@@ -48,31 +43,25 @@ public class UserController {
             model.addAttribute("user", userOptional.get());
             return "user-edit";
         } else {
-            return "redirect:/";
+            return "redirect:/users";
         }
     }
 
     @PostMapping("/update")
     public String updateUser(@ModelAttribute("user") User user) {
         userService.updateUser(user);
-        return "redirect:/";
+        return "redirect:/users";
     }
 
     @GetMapping("/delete/{id}")
     public String deleteUser(@PathVariable("id") UUID id) {
         userService.deleteUser(id);
-        return "redirect:/";
+        return "redirect:/users";
     }
 
     @GetMapping("/deleteAll")
     public String deleteAllUsers() {
         userService.deleteAllUsers();
-        return "redirect:/";
-    }
-
-    @GetMapping("/hello")
-    @ResponseBody
-    public String hello() {
-        return "hello";
+        return "redirect:/users";
     }
 }

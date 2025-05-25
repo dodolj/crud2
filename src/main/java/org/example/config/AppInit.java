@@ -1,5 +1,6 @@
 package org.example.config;
 
+import org.springframework.lang.NonNull;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
 public class AppInit extends AbstractAnnotationConfigDispatcherServletInitializer {
@@ -15,7 +16,8 @@ public class AppInit extends AbstractAnnotationConfigDispatcherServletInitialize
     }
 
     @Override
+    @NonNull
     protected String[] getServletMappings() {
-        return new String[]{"/users"};
+        return new String[]{"/"};
     }
 }

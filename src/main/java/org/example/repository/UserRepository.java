@@ -20,7 +20,7 @@ public interface UserRepository {
     void update(User user);
 
     @Transactional
-    boolean delete(UUID id);
+    void delete(UUID id);
 
     @Transactional
     void deleteAllUsers();

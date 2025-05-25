@@ -2,7 +2,6 @@ package org.example.repository;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
-import lombok.RequiredArgsConstructor;
 import org.example.model.User;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -44,13 +43,11 @@ public class UserRepositoryImpl implements UserRepository {
 
     @Override
     @Transactional
-    public boolean delete(UUID id) {
+    public void delete(UUID id) {
         User user = entityManager.find(User.class, id);
         if (user != null) {
             entityManager.remove(user);
-            return true;
         }
-        return false;
     }
 
     @Override
